@@ -20,7 +20,7 @@
           style="max-width: 50px;" />
 
         <h4 class="mb-2 text-2xl font-medium leading-[1.2]"></h4>
-        <p class="mb-4 text-gray-100">User name</p>
+        <p class="mb-4 text-gray-100 overflow-hidden mr-5">{{Auth::user()->username}}</p>
       </div>
       <hr class="border-gray-300" />
     </div>
@@ -30,8 +30,21 @@
         data-te-sidenav-menu-ref>
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-            href="/additem"
+            class="group flex {{request()->is('admindashboard') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30  active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            href="/admindashboard" wire:navigate
+            data-te-sidenav-link-ref>
+            <span>
+              <i class="fa fa-dashboard mr-4"></i>
+            </span>
+            <span>Admin Dashboard</span>
+          </a>
+        </li>    
+
+
+        <li class="relative">
+          <a
+            class="group flex {{request()->is('additem') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            href="/additem" wire:navigate
             data-te-sidenav-link-ref>
             <span>
               <i class="fa fa-plus mr-4"></i>
@@ -42,7 +55,7 @@
        
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
             href="#!"
             data-te-sidenav-link-ref>
             <span>
@@ -54,7 +67,7 @@
         
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
             href="#!"
             data-te-sidenav-link-ref>
             <span>

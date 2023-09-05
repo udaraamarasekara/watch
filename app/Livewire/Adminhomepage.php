@@ -4,11 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Sidenav extends Component
+class Adminhomepage extends Component
 {
-
     public function render()
     {
-        return view('livewire.sidenav');
+        return view('livewire.adminhomepage');
     }
 }
