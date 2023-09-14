@@ -20,7 +20,7 @@ class Login extends Component
 
         if(Auth::attempt(['email'=>$this->email,'password'=>$this->password]))
         {
-          return $this->redirect('/admindashboard', navigate: true);
+          return Auth::user()->admin ? $this->redirect('/admindashboard', navigate: true):$this->redirect('/userdashboard', navigate: true);
         }
         else{
             if(User::where('email',$this->email)->exists())

@@ -20,7 +20,7 @@
             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-user-name">
                Email
             </label>
-            <input id="inputemail" x-ref="inputemail" wire:model.lazy="email"  @keyup="click=false" class="appearance-none block w-full bg-gray-200 text-gray-400 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email" type="email" placeholder="user@gmail.com">
+            <input id="inputemail" x-ref="inputemail" wire:model.blur="email"  @keyup="click=false" class="appearance-none block w-full bg-gray-200 text-gray-400 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email" type="email" placeholder="user@gmail.com">
             <p x-show="click && $refs.inputemail.value=='' " class="text-red-500 text-xs italic">Please fill out this field.</p>
             @if(session()->has('email'))
             <p class="text-red-500 text-xs italic">Invalid email.</p>
@@ -34,7 +34,7 @@
             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-password">
                 Password
             </label>
-            <input id="inputpassword" x-ref="inputpassword" wire:model.lazy="password"  @keyup="click=false" class="appearance-none block w-full bg-gray-200 text-gray-400 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
+            <input id="inputpassword" x-ref="inputpassword" wire:model.blur="password"  @keyup="click=false" class="appearance-none block w-full bg-gray-200 text-gray-400 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
             <p x-show="click && $refs.inputemail.value!='' && click && $refs.inputpassword.value=='' " class="text-red-500 text-xs italic">Please fill out this field.</p>
             @if(session()->has('password'))
             <p class="text-red-500 text-xs italic">Invalid password.</p>

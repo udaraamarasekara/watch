@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class imagecard extends Component
+class imageslider extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $price,public string $name,public string $sold,public string $image ,public int $id)
+    public function __construct(public string $type,public $watches)
     {
-        //
+        
     }
 
     /**
@@ -21,6 +21,6 @@ class imagecard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.imagecard');
+        return view('components.imageslider');
     }
 }
