@@ -1,6 +1,6 @@
 <div id="{{$id}}" class="min-w-sm bg-white border border-gray-200 rounded-lg shadow ">
     <a class="grid justify-items-stretch mt-5" href="#">
-        <img class="rounded-t-lg justify-self-center" src="{{url('/watchesCoverImages/'.$image)}}" alt="" />
+        <img class="rounded-t-lg justify-self-center object-cover h-48" src="{{url('/watchesCoverImages/'.$image)}}" alt="" />
     </a>
     <div class="p-5 m-1 bg-gray-200">
         <a class="flex justify-center w-full" href="#">
@@ -13,12 +13,21 @@
         </div>
         <hr class="w-screen h-1 max-w-full mb-3 bg-red-800" >
        <div class="flex flex-row w-full h-full justify-between">
+        @if(Auth::user())
         <a href="singlewatch/{{$id}}" wire:navigate class="inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Read more
             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
         </a>
+        @else
+        <a href="singlewatchguest/{{$id}}" wire:navigate class="inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+        @endif
         @if(Auth::user()  && Auth::user()->admin)
         <a href="editsinglewatch/{{$id}}" wire:navigate class="inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-gray-700 bg-yellow-300 rounded-lg hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-400 dark:focus:ring-yellow-800">
             Edit
@@ -50,8 +59,8 @@
           </div>
           <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
               <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
-                  <button wire:click="navigate('directorder/{{$id}}')" type="button"  class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Direct Order</button>
-                  <button wire:click="navigate('register')" id="confirm-button" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
+                  <button wire:click="navigate('/directorder/{{$id}}')" type="button"  class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Direct Order</button>
+                  <button wire:click="navigate('/register')" id="confirm-button" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
               </div>
           </div>
       </div>

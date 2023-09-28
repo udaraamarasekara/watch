@@ -11,7 +11,22 @@
   
         <title>Watch</title>
     </head>
-    <body x-data="{navtwoheight:0}" class="h-full bg-slate-800 " >
+    <body x-init="
+    height =  screen.height;
+    Alpine.data('openh',true);
+    if (height > 376) {
+     openh = true
+    }else{
+      openh = false  
+    }
+    " x-data="{ openh: true }"  @resize.window="
+    height =screen.height;
+    if (height > 376) {
+     openh = true
+    }else{
+      openh = false  
+    }
+    "  x-data="{navtwoheight:0}" class="h-full bg-slate-800 " >
         {{$slot}}
         <livewire:scripts /> 
     </body>

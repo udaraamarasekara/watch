@@ -30,17 +30,21 @@
         data-te-sidenav-menu-ref>
         <li class="relative">
           <a
-            class="group flex {{request()->is('admindashboard') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30  active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
-            href="/admindashboard" wire:navigate
+            class="group flex {{request()->is('dashboard') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30  active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            href="/dashboard" wire:navigate
             data-te-sidenav-link-ref>
             <span>
               <i class="fa fa-dashboard mr-4"></i>
             </span>
+            @if(Auth::user()->admin)
             <span>Admin Dashboard</span>
+            @else
+            <span>User Dashboard</span>
+            @endif
           </a>
         </li>    
 
-
+        @if(Auth::user()->admin)
         <li class="relative">
           <a
             class="group flex {{request()->is('additem') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
@@ -75,7 +79,20 @@
             </span>
             <span>Ongoing Deliveries</span>
           </a>
-        </li>    
+        </li> 
+        @endif   
+        <li class="relative">
+          <a
+            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            href="/addcomment" wire:navigate
+            data-te-sidenav-link-ref>
+            <span>
+              <i class="fa fa-comment mr-4"></i>
+            </span>
+            <span>Review Service</span>
+          </a>
+        </li> 
+     
       </ul>
     </div>
   </nav>

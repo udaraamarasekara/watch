@@ -4,13 +4,17 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Watch;
+use App\Models\Comment;
+use Livewire\WithPagination;
 
 class Guesthome extends Component
 {
-    public $watches;
+    use WithPagination;
+
     public function render()
     {
-        $this->watches=Watch::all(); 
-        return view('livewire.guesthome');
+        $comments=Comment::paginate(10);
+        $watches=Watch::all(); 
+        return view('livewire.guesthome',['watches'=>$watches,'comments'=>$comments]);
     }
 }

@@ -10,8 +10,11 @@
 @endauth
 @foreach($data as $row) 
    <x-imagecard :key="$row->id" :id="$row->id" :image="$row->coverimage->image" :name="$row->name" :price="$row->price"  sold="" />
-  @endforeach 
+@endforeach 
 
+</div>
+<div class="mx-10 my-3 w-full  justify-center flex flex-row">
+{{$data->links('vendor.livewire.tailwind')}}
 </div>
 </div>
 @endSection

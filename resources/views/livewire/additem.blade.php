@@ -1,4 +1,4 @@
-@extends('livewire.admindashboard')
+@extends('livewire.dashboard')
 @section('content')
  <div x-data="{click:false}" class=" flex flex-col" >
     <div class="md:pl-60 w-full flex-wrap flex flex-row justify-center " >

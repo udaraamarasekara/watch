@@ -18,4 +18,9 @@ class Singlewatchview extends Component
     {
      return Auth::user() ? $this->redirect('/directOrder/{{$this->id}}',navigate:true):$this->redirect('/userOrder/{{$this->id}}',navigate:true);
     }
+
+    public function navigate($url){
+        return $this->redirect($url, navigate: true);
+  
+    }
 }
