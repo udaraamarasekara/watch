@@ -136,8 +136,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-row mt-2 ml-3">
-                <input wire:loading.remove type="submit" id="sbt" @click="click=true" value="Add watch"
+            <div x-data="{ uploading: false}" class="flex flex-row mt-2 ml-3">
+                <input x-show="uploading" type="submit" id="sbt" @click="click=true" value="Add watch"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             </div>
     </form>

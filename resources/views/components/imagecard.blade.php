@@ -4,7 +4,7 @@
     </a>
     <div class="p-5 m-1 bg-gray-200">
         <a class="flex justify-center w-full" href="#">
-            <h5 class="mb-2  text-2xl font-bold tracking-tight text-gray-900 ">{{$name}}</h5>
+            <h5 class="mb-2 overflow-hidden  text-2xl font-bold tracking-tight text-gray-900 ">{{$name}}</h5>
         </a>
         <hr class="w-screen h-1 max-w-full mb-3 bg-red-800" >
         <div class="flex flex-row justify-between">    
