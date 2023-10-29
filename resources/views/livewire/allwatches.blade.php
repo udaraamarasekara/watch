@@ -9,7 +9,7 @@
          @endauth
          @foreach($data as $row)
          <x-imagecard :key="$row->id" :id="$row->id" :image="$row->coverimage->image" :name="$row->name"
-            :price="$row->price" sold="" />
+            :price="$row->price" :sold="$row->sold ? $row->sold :0" />
          @endforeach
 
    </div>

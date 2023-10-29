@@ -23,7 +23,7 @@
     <div x-show="openh" class="md:my-1 mx-1 mt-2 ">
         <div class="md:h-full bg-gray-300 md:w-1 w-full h-1 "></div>
     </div>
-    <input
+    <input  autocomplete="off"  wire:model.live="sugest"
         class="appearance-none fa w-4/5 self-center block md:w-1/3 bg-yellow-200 text-red-950 border border-red-500 rounded  p-4 m-3 leading-tight focus:outline-none "
-        id="grid-first-name" type="text" placeholder="&#xF002 search your order or watch">
+        id="grid-first-name" type="text" placeholder="&#xF002 search your order or watch"/>
 </div>

@@ -8,8 +8,8 @@
         </a>
         <hr class="w-screen h-1 max-w-full mb-3 bg-red-800" >
         <div class="flex flex-row justify-between">    
-                <p class="mb-3 bg-yellow-400 px-4 py-2 font-normal text-gray-700 ">Price. {{$price}}</p>
-                <p class="mb-3 bg-red-400 px-4 py-2 text-white font-normal text-gray-700 ">Price. {{$price}}</p>
+                <p class="mb-3 bg-yellow-400 px-4 py-2 font-normal text-gray-700 ">Price(USD). {{$price}}</p>
+                <p class="mb-3 bg-red-400 px-4 py-2 text-white font-normal text-gray-700 ">{{$sold}} Items Sold</p>
         </div>
         <hr class="w-screen h-1 max-w-full mb-3 bg-red-800" >
        <div class="flex flex-row w-full h-full justify-between">

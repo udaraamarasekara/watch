@@ -17,4 +17,9 @@ class Guesthome extends Component
         $watches=Watch::all(); 
         return view('livewire.guesthome',['watches'=>$watches,'comments'=>$comments]);
     }
+
+    public function navigate($url)
+    {
+     return $this->redirect($url, navigate: true);
+    }
 }

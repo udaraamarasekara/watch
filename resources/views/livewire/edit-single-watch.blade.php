@@ -8,7 +8,7 @@
         x-data="{success:true}" x-show="success"
         class="w-1/3 h-1/7 top-10 left-50 z-50 fixed bg-green-100 border border-green-400 text-green-700 px-4 py-3  rounded"
         role="alert">
-        <strong class="font-bold">New watch registered!</strong>
+        <strong class="font-bold">watch Updated!</strong>
         <span class="block sm:inline"></span>
         <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
             <svg class="fill-current h-6 w-6 text-green-500" @click="success=false" role="button"
@@ -20,7 +20,29 @@
         </span>
     </div>
     @endif
-    <form wire:submit.prevent="addwatch" class="w-4/5 mt-40 mb-10">
+    <form wire:submit.prevent="editwatch" class="w-4/5 mt-40 mb-10">
+        <div class="flex flex-wrap -mx-3 justify-center mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name">
+                   Actual Sold Quantity
+                </label>
+                <div 
+                    class="appearance-none block w-full bg-gray-200 text-gray-400 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                >{{$admin_sold}}</div>
+                <p x-show="click && $refs.watchname.value==''" class="text-red-500 text-xs italic">Please fill out this
+                    field.</p>
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-last-name">
+                    Sold quantity shown to customer
+                </label>
+                <input x-ref="sold" wire:model.blur="sold" @keyup="click=false"
+                    class="appearance-none block w-full bg-gray-200 text-gray-800 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="watch-pricee" min="0" step="any" type="number" placeholder="">
+                <p x-show="click && $refs.watchname.value!=''&& $refs.sold.value==''"
+                    class="text-red-500 text-xs italic">Please fill out this field.</p>
+            </div>
+        </div>
         <div class="flex flex-wrap -mx-3 justify-center mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name">
@@ -64,7 +86,7 @@
                     <div class="flex flex-col flex-grow mb-3">
                         <div x-data="{ files: null }" id="FileUpload"
                             class="block w-full py-2 px-3 relative bg-white appearance-none border-2 border-gray-300 border-solid rounded-md hover:shadow-outline-gray">
-                            <input type="file" wire:model.blur="coverimage"
+                            <input type="file" wire:model.blur="newcoverimage"
                                 class="absolute inset-0 z-50 m-0 p-0 w-full h-full outline-none opacity-0"
                                 id="coverimage"
                                 x-on:change="files = $event.target.files; console.log($event.target.files);"
@@ -106,7 +128,7 @@
                     <div class="flex flex-col flex-grow mb-3">
                         <div x-data="{ file:null  }" id="FileUpload"
                             class="block w-full py-2 px-3 relative bg-white appearance-none border-2 border-gray-300 border-solid rounded-md hover:shadow-outline-gray">
-                            <input type="file" multiple id="restimages" wire:model.blur="otherphotos"
+                            <input type="file" multiple id="restimages" wire:model.blur="newotherphotos"
                                 class="absolute inset-0 z-50 m-0 p-0 w-full h-full outline-none opacity-0"
                                 x-on:change="file = $event.target.files; console.log($event.target.files);"
                                 x-on:dragover="$el.classList.add('active')"
@@ -138,12 +160,17 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
+            
             <div  class="flex flex-row mt-2 ml-3">
-                <input wire:loading.attr="disabled" wire:target="coverimage" wire:target="otherphotos" x-bind:disabled="uploading" :class="uploading && 'disabled:opacity-30 bg-blue-200'"  wire:loading.class="disabled:opacity-70" type="submit" id="sbt" @click="click=true" value="Add watch"
+                <input wire:loading.attr="disabled" wire:target="newcoverimage" wire:target="otherphotos" x-bind:disabled="uploading" :class="uploading && 'disabled:opacity-30 bg-blue-200'"  wire:loading.class="disabled:opacity-70" type="submit" id="sbt" @click="click=true" value="Update watch"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    </form>
+                <div wire:click="navigate('/editsinglewatchimage/{{$id}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 rounded">Images</div>
+
             </div>
-    </form>
+  
 </div>
 <script>
     window.onclick = function () {
