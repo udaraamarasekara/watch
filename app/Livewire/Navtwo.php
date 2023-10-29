@@ -9,6 +9,7 @@ class Navtwo extends Component
    
     public function render()
     {
+        $this->sugest=session('sugest');
         return view('livewire.navtwo');
     }
 
