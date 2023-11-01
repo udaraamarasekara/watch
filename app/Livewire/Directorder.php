@@ -30,7 +30,7 @@ class Directorder extends Component
     }
 
     public function order($price)
-    {  
+    {   
         if($this->username!='' && $this->email!='' && strlen($this->contact)>=10 && is_numeric($this->contact) && $this->country!='' && $this->zip !='' && $this->address!='')
         {  
         

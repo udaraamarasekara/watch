@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
            $table->text('order_code');
-           $table->text('status')->default('paid');
+           $table->text('status')->default('paid')->nullable();
            $table->text('link')->nullable();
         });
     }
