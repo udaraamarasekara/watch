@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('watch_id')->constrained();
             $table->morphs('orderable');
             $table->text('order_code');
-            $table->text('status')->default('paid')->nullable();
+            $table->text('status')->nullable();
             $table->text('link')->nullable();
         });
     }
