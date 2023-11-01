@@ -1,14 +1,22 @@
-<div>
-  <form class="mb-6 bg-slate-800" wire:submit="addComment" >
-        <div class="py-2 px-4 mb-4  rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label for="comment" class="sr-only">Your comment</label>
-            <textarea id="comment" rows="6"
-                class="px-0 w-full bg-slate-800 text-sm text-gray-100 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                placeholder="Write a comment..." wire:model.blur="message" required></textarea>
-        </div>
-        <button type="submit"
-            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-            Post comment
-        </button>
-    </form>
+<div class="flex justify-center">
+<form wire:submit.prevent="addComment" class="w-4/5 mt-40 mb-10">
+       
+       <div class="flex flex-wrap ml-2 mb-6">
+           <div class="w-full px-3">
+               <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-password">
+               Your comment
+               </label>
+               <textarea x-ref="message" wire:model.blur="message" required
+                   class="appearance-none block w-full bg-gray-200 text-gray-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    placeholder=""></textarea>
+           </div>
+       </div>
+       
+           <div  class="flex flex-row mt-2 ml-5">
+               <input   type="submit" @click="click=true" value="Add comment"
+                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+           </div>
+   </form>
 </div>
+
+

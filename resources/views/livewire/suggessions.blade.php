@@ -6,14 +6,9 @@
   <ul class="list-disc text-white my-7">  
    @foreach($output as $row)
     <li wire:click="showit({{$row['id']}},'{{$row['type']}}')" class="cursor-pointer hover:underline">   
-      @php
-       $ary=  $row->toArray();
-      @endphp
-     @foreach($ary as $k=>$v)
-      @if($k!='id' && $k!='type' )
-       {{$k}} : {{$v}}
-      @endif 
-     @endforeach 
+      
+       {{$row->name}}
+     
     </li>   
    @endforeach
   </ul>

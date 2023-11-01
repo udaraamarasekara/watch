@@ -63,11 +63,12 @@
           @endauth
           @if(auth()->user() && auth()->user()->admin)
           <li class="md:hidden">
-            <a href="#" class="block py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300  h-full "
+            <a href="/additem" wire:navigate class="block py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300  h-full "
               aria-current="page">Add Item</a>
           </li>
           <li class="md:hidden">
-            <a href="#"
+            <a href="/paidorders"
+                wire:navigate
               class="md:hidden block py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300  h-full "
               aria-current="page">Paid orders</a>
           </li>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('zip');
             $table->string('address');
             $table->string('contact');
-            $table->string('email')->unique();
+            $table->string('email');
         });
     }
 

@@ -60,7 +60,7 @@
         <li class="relative">
           <a
             class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
-            href="#!"
+            href="/paidorders" wire:navigate
             data-te-sidenav-link-ref>
             <span>
               <i class="fa fa-check mr-4"></i>

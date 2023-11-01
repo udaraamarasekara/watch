@@ -46,26 +46,25 @@
 
 
     <div id="info-popup" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-  <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
-      <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
-      <div class="w-full flex justify-end">
-      <i id="close-modal" class="fa fa-close hover:text-red-600 cursor-pointer"></i>
-      </div>  
-
-          <div class="mb-4 w-full  text-sm font-light text-gray-500 dark:text-gray-400">
-            <div class="flex justify-center"> 
-            <h3 class="mb-3 items-center text-2xl font-bold text-gray-900 dark:text-white">Select method</h3>
-            </div> 
-          </div>
-          <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
-              <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
-                  <button wire:click="navigate('/directorder/{{$id}}')" type="button"  class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Direct Order</button>
-                  <button wire:click="navigate('/register')" id="confirm-button" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+     <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
+        <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
+            <div class="w-full flex justify-end">
+            <i id="close-modal" class="fa fa-close hover:text-red-600 cursor-pointer"></i>
+            </div>  
+            <div class="mb-4 w-full  text-sm font-light text-gray-500 dark:text-gray-400">
+                <div class="flex justify-center"> 
+                <h3 class="mb-3 items-center text-2xl font-bold text-gray-900 dark:text-white">Select method</h3>
+                </div> 
+            </div>
+            <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
+                <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
+                    <button wire:click="navigate('/directorder/{{$id}}')" type="button"  class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Direct Order</button>
+                    <button wire:click="navigate('/register')" id="confirm-button" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
+                </div>
+            </div>
+         </div>
+        </div>
+    </div>
 
 <script>
 

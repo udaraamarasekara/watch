@@ -26,7 +26,7 @@ class Additem extends Component
       try
        {
        DB::beginTransaction();
-       $watch = Watch::create(['name'=>$this->watchname,'price'=>$this->watchprice,'description'=>$this->description]); 
+       $watch = Watch::create(['name'=>$this->watchname,'price'=>$this->watchprice,'description'=>$this->description,'sold'=>0,'admin_sold'=>0]); 
        $imageName = time() . '.' . $this->coverimage->extension();
        Storage::disk('public')->putFileAs('watchesCoverImages',$this->coverimage,$imageName );
        WatchCoverImage::create(['watch_id'=>$watch->id,'image'=>$imageName]);

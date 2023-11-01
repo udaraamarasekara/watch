@@ -1,6 +1,6 @@
 @extends('livewire.dashboard')
 @section('content')
-<div class="md:pl-60 top-20 absolute mt-10 w-full flex flex-col m-5 pr-5  ">
+<div class="md:pl-60 flex flex-col">
     @if(session()->has('success'))
     <div x-data="{success:true}" x-show="success" class="w-1/3 h-1/7 top-10 left-70 z-50 fixed bg-green-100 border
     border-green-400 text-green-700 px-4 py-3 rounded" role="alert">
@@ -16,6 +16,8 @@
     </span>
     </div>
     @endif
-  <livewire:commentfrm />
+    <div class=" w-full " > 
+    <livewire:commentfrm />
+    </div>
 </div>
 @endSection

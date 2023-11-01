@@ -6,6 +6,7 @@ use App\Livewire\Homepage;
 use App\Livewire\Allwatches;
 use App\Livewire\Directorder;
 use App\Livewire\Guesthome;
+use App\Livewire\Paidorders;
 use App\Livewire\Singlewatchview;
 use App\Livewire\Suggessions;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,7 @@ use App\Livewire\Register;
 use App\Livewire\Login;
 use App\Livewire\Singlewatchguest;
 use App\Livewire\AddComment;
-
+use App\Http\Controllers\respController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,8 @@ use App\Livewire\AddComment;
 |
 */
 
+Route::get('/paymentSuccess',[respController::class,'success'])->name('success');
+Route::get('/paymentCancel',[respController::class ,'cancel'] )->name('cancel');
 Route::get('/',Guesthome::class);
 Route::get('/register',Register::class);
 Route::get('/login',Login::class)->name('login');
@@ -47,4 +50,6 @@ Route::middleware(['auth','admin'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/addcomment',AddComment::class);
+    Route::get('/paidorders',Paidorders::class);
+
 });
