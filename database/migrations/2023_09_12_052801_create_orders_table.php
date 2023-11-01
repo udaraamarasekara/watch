@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->decimal('price');
+            $table->integer('quantity');
+            $table->foreignId('watch_id')->constrained();
+            $table->morphs('orderable');
+            $table->text('order_code');
+            $table->text('status')->default('paid')->nullable();
+            $table->text('link')->nullable();
         });
     }
 
