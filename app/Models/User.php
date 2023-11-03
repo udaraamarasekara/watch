@@ -53,8 +53,8 @@ class User extends Authenticatable
       return $this->hasOne(Admin::class);
     }
 
-    public function order()
+    public function orders()
     {
-        return $this->morphOne('App\Order', 'orderable');
+        return $this->morphMany('App\Models\Order', 'orderable');
     }
 }

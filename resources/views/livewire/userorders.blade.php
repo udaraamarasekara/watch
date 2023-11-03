@@ -51,8 +51,13 @@
 
                 </td>
                 <td class="px-6 py-4">
+
+                   @if($order->status!='returned')
                    <button  :key="$order->id"  @click="viewpopup({{$order->id}})" 
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update status</button>
+                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Return Order</button>
+                   @else
+                   <p class="text-red-700" >No available actions</P>
+                   @endif
                 </td>
             </tr>
             @endforeach
@@ -64,44 +69,36 @@
       {{$orders->links('vendor.livewire.tailwind')}}
 </div>
 
-
 <div id="info-popup" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-     <div x-data="{ship:false}" class="relative p-4 w-full max-w-lg h-full md:h-auto">
-        <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
-            <div class="w-full flex justify-end">
-            <i id="close-modal" class="fa fa-close hover:text-red-600 cursor-pointer"></i>
-            </div>  
-            <div class="mb-4 w-full  text-sm font-light text-gray-500 dark:text-gray-400">
-                <div class="flex justify-center"> 
-                <h3 class="mb-3 items-center text-2xl font-bold text-gray-900 dark:text-white">Update Order Status</h3>
-                </div> 
-            </div>
-            <div class="mb-4 w-full  text-sm font-light text-gray-500 dark:text-gray-400">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                <select x-ref="status" @click="$refs.status.value=='shipped' ? ship=true:ship=false" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="paid" selected>Paid</option>
-                <option value="shipped">Shipped</option>
-                <option value="canceled">Canceled</option>
-                </select>
+  <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
+      <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
+      <div class="w-full flex justify-end">
+      <i id="close-modal" class="fa fa-close hover:text-red-600 cursor-pointer"></i>
+      </div>  
+           <input type="hidden" id="hid">
+          <div class="mb-4 w-full items-center text-sm font-light text-gray-500 dark:text-gray-400">
+            <div class="flex flex-col items-center justify-center"> 
+            <h3 class="mb-3 items-center text-2xl font-bold text-gray-900 dark:text-white">Are You Sure?</h3>
+            <p class="mb-3 items-center text-xl font-bold text-gray-900 dark:text-white">There is no turnback!</p>
             </div> 
-            <input type="hidden" id="oid"> 
-            <div x-show="ship" class="mb-4 w-full  text-sm font-light text-gray-500 dark:text-gray-400">  
-               <input id="link" wire:model="link" placeholder="Order Tracking link" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
-            <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
-                <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
-                    <button wire:click="statusit($refs.status.value,document.getElementById('oid').value)" id="updt" type="button"  class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Update Order</button>
-                </div>
-            </div>
-         </div>
-        </div>
-    </div>
+          </div>
+          <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
+              <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
+                  <button wire:click="returnorder(document.getElementById('hid').value)" type="button" id="btn" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Return Order</button>
+                  <button  id="confirm-button" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Back</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
+
+</div>
 <script defer>
 
 function viewpopup(id)
 {
-document.getElementById('oid').value=id;
+    document.getElementById('hid').value=id;
     const modalEl = document.getElementById('info-popup');
 const privacyModal = new Modal(modalEl, {
     placement: 'center'
@@ -114,18 +111,18 @@ closeModalEl.addEventListener('click', function() {
     privacyModal.hide();
 });
 
-const acceptPrivacyEl = document.getElementById('updt');
+const acceptPrivacyEl = document.getElementById('confirm-button');
 acceptPrivacyEl.addEventListener('click', function() {
     privacyModal.hide();
 });
-
+const acceptPrivacyEl2 = document.getElementById('btn');
+acceptPrivacyEl2.addEventListener('click', function() {
+    privacyModal.hide();
+});
 
 }
 
 
 </script> 
-
-
-
 </div>
-@endSection
+@endsection

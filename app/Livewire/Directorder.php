@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Watch;
+use Exception;
 use Livewire\Component;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 class Directorder extends Component
@@ -30,7 +31,7 @@ class Directorder extends Component
     }
 
     public function order($price)
-    {   
+    {   try{
         if($this->username!='' && $this->email!='' && strlen($this->contact)>=10 && is_numeric($this->contact) && $this->country!='' && $this->zip !='' && $this->address!='')
         {  
         
@@ -75,6 +76,8 @@ class Directorder extends Component
          return redirect()->route('cancel');   
         }       
 
+    }}catch(Exception $e){
+        dd($e);
     }
     }
 

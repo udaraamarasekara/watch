@@ -59,7 +59,7 @@
        
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            class="group flex {{request()->is('paidorders') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
             href="/paidorders" wire:navigate
             data-te-sidenav-link-ref>
             <span>
@@ -71,7 +71,7 @@
         
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            class="group flex {{request()->is('paidorders') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
             href="#!"
             data-te-sidenav-link-ref>
             <span>
@@ -83,7 +83,7 @@
         @endif   
         <li class="relative">
           <a
-            class="group flex h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            class="group flex {{request()->is('addcomment') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} h-12 cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
             href="/addcomment" wire:navigate
             data-te-sidenav-link-ref>
             <span>
@@ -92,6 +92,19 @@
             <span>Review Service</span>
           </a>
         </li> 
+        @if(Auth::user() && !Auth::user()->admin)
+        <li class="relative">
+          <a
+            class="group flex h-12 {{request()->is('userorders') ? 'bg-gray-300/30 outline-none text-inherit ':'' }} cursor-pointer items-center truncate  px-6 py-4 text-[0.875rem] text-gray-100 outline-none transition duration-300 ease-linear hover:bg-gray-300/30 hover:text-inherit hover:outline-none focus:bg-gray-300/30 focus:text-inherit focus:outline-none active:bg-gray-300/30 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none "
+            href="/userorders" wire:navigate
+            data-te-sidenav-link-ref>
+            <span>
+              <i class="fa fa-cart-arrow-down mr-4"></i>
+            </span>
+            <span>My orders</span>
+          </a>
+        </li> 
+        @endif
      
       </ul>
     </div>

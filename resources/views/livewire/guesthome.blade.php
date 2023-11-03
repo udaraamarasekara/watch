@@ -21,7 +21,7 @@
         </span>
     </div>
     @endif
-    <div x-init="$refs.guesthome.style.marginTop=navtwoheight+'px';" x-ref="guesthome" class="flex
+    <div x-init="$refs.guesthome.style.marginTop=navtwoheight+'px';" x-effect="$refs.guesthome.style.marginTop=navtwoheight+'px';" id="guesthome" x-ref="guesthome" class="flex
       pt-20 pb-3 w-full justify-center"> <h3 class="text-md text-white my-5">Click on a image for select</h3>
     </div> 
     <div class="flex pb-1 md:mt-0  mt-1 w-full flex-col md:flex-row">
@@ -32,12 +32,19 @@
       <x-imageslider :watches="$watches" type="image" />
     </div>
   </div>
+<div class="mx-10 my-3 w-full  justify-center flex flex-row">
+    
+</div>
   @foreach($comments as $comment )
   <x-comment :key="$comment->id" :id="$comment->id" />
   @endforeach
   <div class="mx-10 my-3 w-full  justify-center flex flex-row">
-    {{$comments->links('vendor.livewire.tailwind')}}
+  <button style="display:none" class="bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded" wire:click="prev" >Previous</button>
+
+   <button style="display:none" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" wire:click="next" >Next</button>
   </div>
 </div>
+<script defer>
 
+</script>  
 @endSection

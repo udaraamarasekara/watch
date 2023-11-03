@@ -9,11 +9,11 @@
 <div class=" w-full flex justify-center">
   <h3 class="mb-10 mt-5 text-4xl font-extrabold leading-none tracking-tight text-gray-100 md:text-5xl lg:text-6xl ">{{$watch->name}}</h3>
 </div>
-<div class=" w-full flex justify-between ">
+<div class="ml-5 w-full flex justify-between ">
   <p class="mb-10 mt-5 text-2xl leading-none tracking-tight text-gray-100 md:text-2xl lg:text-2xl ">{{$watch->description}}</p>
 </div>
 <div class="flex flex-row justify-end p-5">
-<button @click="viewpopup({{$id}})" type="button"  class="m-3 inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-gray-700 bg-green-300 rounded-lg hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800">Order</button>
+<button @click="viewpopup({{$id}})" type="button"  class="m-3   px-3 py-2 w-full text-sm font-medium text-center text-gray-700 bg-green-300 sm:w-auto rounded-lg hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800">Order</button>
 
 <button wire:click="navigate('/allwatches')" type="button"  class="py-2 m-3  px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-auto hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Back</button>
 

@@ -34,6 +34,10 @@
            <i class="fa fa-edit pt-1 px-2 "></i>
         </a>
         @elseif(Auth::user())
+        <a href="#" @click="viewpopup2({{$id}})" class="inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-gray-700 bg-green-300 rounded-lg hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800">
+            Order
+           <i class="fa fa-shopping-cart pt-1 px-2 "></i>
+        </a>
         @else
         <a href="#" @click="viewpopup({{$id}})" class="inline-flex items-center  px-3 py-2 text-sm font-medium text-center text-gray-700 bg-green-300 rounded-lg hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800">
             Order
@@ -66,6 +70,46 @@
         </div>
     </div>
 
+    <div id="info-popup2" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+     <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
+        <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
+            <div class="w-full flex justify-end">
+            <i id="close-modal2" class="fa fa-close hover:text-red-600 cursor-pointer"></i>
+            </div>  
+            <div class="mb-4 w-full flex flex-row  text-sm font-light text-gray-500 dark:text-gray-400">
+
+                <div class="w-1/2 px-3  mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-city">
+                        Quantity
+                    </label>
+                    <input id="inputqty"
+                        @click="$refs.inputprice.value={{$price}}*$refs.inputqty.value==0 ?{{$price}}:{{$price}}*$refs.inputqty.value"
+                        min="1"
+                        @keyup="$refs.inputprice.value={{$price}}*$refs.inputqty.value==0 ?{{$price}}:{{$price}}*$refs.inputqty.value"
+                        x-ref="inputqty" wire:model.blur="qty" @keyup="click=false"
+                        class="appearance-none block w-full bg-gray-200 text-gray-400 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-city" type="number" placeholder="1">
+                </div>
+
+                <div class="w-1/2 px-3  mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-city">
+                        Price (USD)
+                    </label>
+                    <input id="inputprice" x-ref="inputprice" disabled value="{{$price}}" @keyup="click=false"
+                        class="appearance-none block w-full bg-gray-200 text-gray-400 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-city" type="number" placeholder="1">
+                </div>
+
+            </div>
+            <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
+                <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
+                    <button wire:click="order({{$id}})" id="confirm-button2" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Order</button>
+                </div>
+            </div>
+         </div>
+        </div>
+    </div>
+
 <script>
 
 function viewpopup($id)
@@ -85,11 +129,31 @@ closeModalEl.addEventListener('click', function() {
 
 const acceptPrivacyEl = document.getElementById('confirm-button');
 acceptPrivacyEl.addEventListener('click', function() {
-    alert('privacy accepted');
     privacyModal.hide();
 });
 }
 
+
+function viewpopup2($id)
+{
+
+    const modalEl = document.getElementById('info-popup2');
+const privacyModal = new Modal(modalEl, {
+    placement: 'center'
+});
+
+privacyModal.show();
+
+const closeModalEl = document.getElementById('close-modal2');
+closeModalEl.addEventListener('click', function() {
+    privacyModal.hide();
+});
+
+const acceptPrivacyEl = document.getElementById('confirm-button2');
+acceptPrivacyEl.addEventListener('click', function() {
+    privacyModal.hide();
+});
+}
 
 </script> 
 

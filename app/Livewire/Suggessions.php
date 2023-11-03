@@ -1,35 +1,55 @@
 <?php
 
 namespace App\Livewire;
+use App\Models\DirectCustomer;
 use App\Models\Order;
 use App\Models\Watch;
-use Illuminate\Support\Collection;
+use App\Models\User;
 use Livewire\Component;
-
+use Session;
 class Suggessions extends Component
 {
-    public $output,$watches,$orders;
+    public $watches,$orders,$ordercode;
     public function render()
     { 
        $this->fetchWatches();
-       $this->output=$this->watches;
+       $this->fetchOrders();
         return view('livewire.suggessions');
     }
 
     public function fetchOrders()
     {
-       $this->orders=  Order::where('name', 'like', '%'.session('sugest').'%')->get();
-
+       $this->orders=  Order::where('id', 'like', '%'.session('sugest').'%')->orWhere('watch_id',
+       Watch::where('name', 'like', '%'.session('sugest').'%')->orWhere('price', 'like', '%'.session('sugest').'%')
+        ->orWhere('description', 'like', '%'.session('sugest').'%')->value('id'))->orWhere([['orderable_type','App\Models\DirectCustomer'],
+        ['orderable_id',
+        DirectCustomer::where('fullname', 'like', '%'.session('sugest').'%')->orWhere('country', 'like', '%'.session('sugest').'%')
+        ->orWhere('city', 'like', '%'.session('sugest').'%')->orWhere('zip', 'like', '%'.session('sugest').'%')->
+        orWhere('address', 'like', '%'.session('sugest').'%')->
+        orWhere('contact', 'like', '%'.session('sugest').'%')->
+        orWhere('email', 'like', '%'.session('sugest').'%')
+        ->value('id')
+        ]]
+       )->
+       orWhere([['orderable_type','App\Models\User'],
+        ['orderable_id',
+        User::where('username', 'like', '%'.session('sugest').'%')->orWhere('country', 'like', '%'.session('sugest').'%')
+        ->orWhere('city', 'like', '%'.session('sugest').'%')->orWhere('zip', 'like', '%'.session('sugest').'%')->
+        orWhere('address', 'like', '%'.session('sugest').'%')->
+        orWhere('contact', 'like', '%'.session('sugest').'%')->
+        orWhere('email', 'like', '%'.session('sugest').'%')
+        ->value('id')
+        ]]
+       )->
+       get();
+      
     }
 
     public function fetchWatches()
     {
         $this->watches=Watch::where('name', 'like', '%'.session('sugest').'%')->orWhere('price', 'like', '%'.session('sugest').'%')
         ->orWhere('description', 'like', '%'.session('sugest').'%')->get(['id','name','price','description']);
-        foreach($this->watches as $watch)
-        {
-            $watch['type']='watch';
-        }
+      
     }
 
     public function showit($id,$type)
@@ -40,13 +60,24 @@ class Suggessions extends Component
       }
       else
       {
-
+        if($this->ordercode==Order::find($id)->order_code) 
+         {
+          session(['vieworder'.$id=>true]);
+          $this->navigate('/singleorderguest/'.$id);
+         }
+         else
+         {
+          session()->flash('error','Invalid Order_code');
+         }  
       }
     }
 
     public function navigate($url)
     {
         return $this->redirect($url, navigate: true);
+    }
+    public function setit(){
+
     }
 
 }

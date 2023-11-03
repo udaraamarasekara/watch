@@ -18,6 +18,6 @@
 
     </div>
     <!-- Slider indicators -->
-   
+
     <!-- Slider controls -->
 </div>

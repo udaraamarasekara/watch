@@ -21,7 +21,7 @@ class respController extends Controller
         if($response['status']=='COMPLETED')
         {
           $orderid= $this->insertToDatabase($response['id']);
-          Session::flash('Done','You Placed an Order! Your Order id is :'.$orderid);
+          Session::flash('Done','You Placed an Order! Your Order id is :'.$orderid .'<html><br></html>'.'Your secret code is :'.$response['id']);
 
         }
         return redirect('/');  
@@ -44,7 +44,7 @@ class respController extends Controller
         'watch_id'=>session($id)['watch_id'],
         'quantity'=>session($id)['quantity'],
         'order_code'=>$id,
-        'status'=>'payed',
+        'status'=>'paid',
         'orderable_id'=>$directCus->id,
         'orderable_type'=>get_class($directCus)
       ]);
@@ -64,4 +64,48 @@ class respController extends Controller
       return redirect('/');  
     }
 
+    public function successloged(Request $request)
+    {
+        $provider = new PayPalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $provider->setCurrency('USD');
+        $paypalToken=$provider->getAccessToken();
+        $response=$provider->capturePaymentOrder($request->token); 
+        if($response['status']=='COMPLETED')
+        {
+          $orderid= $this->insertToDatabaseloged($response['id']);
+          Session::flash('Done','You Placed an Order! Your Order id is :'.$orderid);
+
+        }
+        return redirect('/dashboard');  
+
+    }
+
+    public function insertToDatabaseloged($id)
+    {
+      
+     $order=  Order::create([
+        'price'=>session($id)['price'],
+        'watch_id'=>session($id)['watch_id'],
+        'quantity'=>session($id)['quantity'],
+        'order_code'=>$id,
+        'status'=>'paid',
+        'orderable_id'=>session($id)['user'],
+        'orderable_type'=>'App\Models\User'
+      ]);
+
+      Watch::where('id',session($id)['watch_id'])->update([
+        'sold'=>Watch::find(session($id)['watch_id'])->value('sold')+1,
+        'admin_sold'=>Watch::find(session($id)['watch_id'])->value('admin_sold')+1
+      ]
+      );
+      Session::forget($id);
+     return $order->id; 
+    }
+
+    public function cancelloged(Request $request)
+    {
+      Session::flash('error','Something went Wrong');
+      return redirect('/dashboard');  
+    }
 }
