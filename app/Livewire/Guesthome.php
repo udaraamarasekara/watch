@@ -18,7 +18,7 @@ class Guesthome extends Component
          session(['page'=>1]); 
         }
         $comments=Comment::paginate(10);
-        $watches=Watch::all(); 
+        $watches=Watch::orderByRaw('RAND()')->take(3)->get(); 
         return view('livewire.guesthome',['watches'=>$watches,'comments'=>$comments]);
     }
 

@@ -38,6 +38,14 @@
               class="block  py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300 h-full "
               aria-current="page">Logout</a>
           </li>
+          @if(request()->is('/'))
+          <li>
+            <a href="/dashboard" wire:navigate @click.outside="$refs?.dashboard?.classList?.remove('bg-yellow-700')"
+              @click="$refs?.dashboard?.classList?.add('bg-yellow-700')" x-ref="dashboard"
+              class="block  py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300 h-full "
+              aria-current="page">Dashboard</a>
+          </li>
+          @endif
           @else
           @if(!request()->is('login') && !request()->is('register') )
           <li>
