@@ -43,6 +43,7 @@
 
    <button style="display:none" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" wire:click="next" >Next</button>
   </div>
+  <livewire:topSaledItems/>
   <a wire:navigate class="text-white text-md py-4 pr-12 w-full m-4 float-right text-right" href="/allwatches">View more</a>
 </div>
 <script defer>
