@@ -10,39 +10,6 @@
         </div>
         <div class="text-xl m-4 px-4 pb-4 h-36 overflow-y-hidden text-white">
             <p>
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hidden
-
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenv
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hidden
-                {{$item->description}}
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hidden
-
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenv
-            overflow-y-hidden
-            overflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hiddenoverflow-y-hidden
                 {{$item->description}}
             </p>
            </div>
