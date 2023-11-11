@@ -10,7 +10,7 @@ class Topsaleditems extends Component
     {
         $topSaleItems =Watch::orderBy('sold','desc')->limit(3)->get();
         foreach($topSaleItems as $item){
-            !$item->sold && $item->sold=0;
+           $item->sold=0;
         }
         return view('livewire.topsaleditems',['topSaleItems'=>$topSaleItems]);
     }
