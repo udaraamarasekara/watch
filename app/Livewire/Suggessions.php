@@ -7,18 +7,13 @@ use App\Models\Watch;
 use App\Models\User;
 use Livewire\Component;
 use Session;
-use Exception;
 class Suggessions extends Component
 {
     public $watches,$orders,$ordercode;
     public function render()
     { 
-      try{
        $this->fetchWatches();
        $this->fetchOrders();
-      }catch(Exception $e){
-        dd($e);
-      }
         return view('livewire.suggessions');
     }
 
