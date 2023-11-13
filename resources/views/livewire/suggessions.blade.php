@@ -7,7 +7,7 @@
  <br>
   <ul class="list-disc text-white my-7"> 
    @foreach($watches as $row)
-    <li wire:click="showit({{$row['id']}},'{{$row['type']}}')" class="cursor-pointer hover:underline">   
+    <li wire:click="showit({{$row['id']}},'watch')" class="cursor-pointer hover:underline">   
       
        {{$row->name }}
      
@@ -59,7 +59,7 @@
             <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
                 <div class="items-center justify-center w-full space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
                     @if(isset($row))
-                    <button wire:click="showit({{$row['id']}},'order')" id="confirm-button2" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Order</button>
+                    <button wire:click="showit({{$row['id']}},'order')" id="confirm-button2" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">View Order</button>
                     @endif
                   </div>
             </div>

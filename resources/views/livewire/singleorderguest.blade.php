@@ -48,7 +48,9 @@
                     <p><b>Quantity:</b> {{$order->quantity}}</p>
                     <p><b>Total bill:</b> {{$order->price}}</p>
                     <p><b>Status:</b> {{$order->status}}</p>
-
+                    @if($order->link)
+                    <a href="{{$order->link}}" >Tracking Details</a>
+                    @endif
                 </td>
                 <td class="px-6 py-4">
                     @if($order->status!='returned')
