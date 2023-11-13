@@ -46,12 +46,12 @@
               aria-current="page">Dashboard</a>
           </li>
           @else
-          <li>
+          <li class="md:hidden">
             <a href="/" wire:navigate @click.outside="$refs?.home?.classList?.remove('bg-yellow-700')"
               @click="$refs?.home?.classList?.add('bg-yellow-700')" x-ref="home"
               class="block  py-6 pl-5 pr-6 text-white hover:bg-yellow-700 hover:text-yellow-300 h-full "
               aria-current="page">Home</a>
-          </li>
+          </li> 
           @endif
           @else
           @if(!request()->is('login') && !request()->is('register') )
